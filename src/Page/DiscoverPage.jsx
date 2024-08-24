@@ -1,30 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { FaFilter } from "react-icons/fa";
 import Card from "../components/Card";
-import axios from "axios";
 
 const DiscoverPage = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        fetch("//dummyjson.com/test")
-          .then((res) => res.json())
-          .then(console.log);
 
-        const response = await axios.get("");
-        setData(response.data);
+  useEffect(() => {
+    const dataFetch = async () => {
+      try {
+        const res = await fetch("http://localhost:5000/books");
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        const raw = await res.json();
+        setData(raw.data);
       } catch (error) {
-        console.error("Error fetching the data:", error);
-      } finally {
-        setLoading(false);
+        console.error("Error fetching data:", error);
       }
     };
 
-    fetchData();
-  }, [data]);
-  console.log(data);
+    dataFetch();
+  }, []);
 
   return (
     <>
@@ -74,14 +70,20 @@ const DiscoverPage = () => {
         </label>
       </div>
 
-      {data?.map((food) => (
-        <Card
-          key={food.id}
-          name={food.name}
-          description={food.description}
-          calories={food.calories}
-        />
-      ))}
+      {/* card show  */}
+
+      <div className=" flex flex-wrap justify-center">
+        {data?.map((food, index) => {
+          return (
+            <Card
+              key={index}
+              name={food.name}
+              description={food.description}
+              calories={food.calories}
+            />
+          );
+        })}
+      </div>
     </>
   );
 };

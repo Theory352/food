@@ -1,5 +1,6 @@
 import React from "react";
-import { FaLeaf, FaLightbulb } from "react-icons/fa";
+import { FaLeaf } from "react-icons/fa";
+import ThemeToggle from "../components/ThemeToggle";
 
 const MenuPage = () => {
   return (
@@ -13,16 +14,18 @@ const MenuPage = () => {
         </div>
 
         {/* THEME CONTROL  */}
-        <div className=" hover:text-yellow-300 cursor-pointer bg-slate-600 rounded-full p-2">
+        {/* <div className=" hover:text-yellow-300 cursor-pointer bg-slate-600 rounded-full p-2">
           <FaLightbulb />
-        </div>
+        </div> */}
+
+        <ThemeToggle />
       </div>
 
       {/* settings  */}
 
       <div className=" h-full">
         <h3 className="bg-slate-500 text-center p-2 text-3xl text-gray-300 uppercase">
-          Settings
+          Account Settings
         </h3>
 
         {/* profile settings  */}
@@ -72,14 +75,12 @@ const MenuPage = () => {
         </div>
 
         <div className=" flex">
+          {/* update user info  */}
 
-    {/* update user info  */}
-
-        <div className="btn btn-outline bg-slate-500 m-4 hover:text-gray-500 hover:rounded-lg hover:bg-slate-800">
+          <div className="btn btn-outline bg-slate-500 m-4 hover:text-gray-500 hover:rounded-lg hover:bg-slate-800">
             <FaLeaf />
             Update
           </div>
-
 
           {/* for logout  */}
 

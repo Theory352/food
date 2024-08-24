@@ -8,7 +8,6 @@ import Footer from "./components/Footer";
 import ValidateUserRequ from "./Page/ValidateUserRequ";
 
 const App = () => {
-  const { pathname } = useLocation();
   return (
     <>
       <Routes>
